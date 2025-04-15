@@ -6,12 +6,30 @@ package com.example.calculadoraresistencias.Screen
 
 import android.net.Uri
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -20,6 +38,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.calculadoraresistencias.Screen.Resistor
+
 
 @Composable
 fun SelectorScreen(navController: NavController) {
@@ -76,6 +96,11 @@ fun SelectorScreen(navController: NavController) {
             CardSelector("Banda 2", colores, banda2) { banda2 = it }
             CardSelector("Multiplicador", multiplicadores, banda3) { banda3 = it }
             CardSelector("Tolerancia", tolerancias, banda4) { banda4 = it }
+
+
+            if (banda1.isNotEmpty() && banda2.isNotEmpty() && banda3.isNotEmpty()) {
+                Resistor(banda1, banda2, banda3)
+            }
 
             Button(
                 onClick = {

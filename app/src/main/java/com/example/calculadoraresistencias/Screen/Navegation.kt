@@ -7,8 +7,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.calculadoraresistencias.Screen.ResultadoScreen
-import com.example.calculadoraresistencias.Screen.SelectorScreen
 
 @Composable
 fun NavGraph(navController: NavHostController = rememberNavController()) {
